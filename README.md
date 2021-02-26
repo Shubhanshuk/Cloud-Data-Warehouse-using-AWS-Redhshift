@@ -92,17 +92,22 @@ State and justify your database schema design and ETL pipeline.
 
 ### Steps followed on this project
 
-1. Create Table Schemas
-- Design schemas for your fact and dimension tables
-- Write a SQL CREATE statement for each of these tables in sql_queries.py
-- Complete the logic in create_tables.py to connect to the database and create these tables
-- Write SQL DROP statements to drop tables in the beginning of - create_tables.py if the tables already exist. This way, you can run create_tables.py whenever you want to reset your database and test your ETL pipeline.
-- Launch a redshift cluster and create an IAM role that has read access to S3.
-- Add redshift database and IAM role info to dwh.cfg.
-- Test by running create_tables.py and checking the table schemas in your redshift database. You can use Query Editor in the AWS Redshift console for this.
+1. Setup AWS Infrastructure using code.  
 
-2. Build ETL Pipeline
+- Create AWS role that can access S3 and AWS redshift
+- Add AWS ROLE IRN in dwh.cfg and attach the required policy
+- Create the AWS reshift cluster based on the onfigurations set in .cfg file
+
+2. Create Table Schemas
+- Write a SQL CREATE statement for each of these tables in sql_queries.py. 
+- Write the DROP table queries
+- Write the Create table queries
+- Write the COPY command to extarct the data from S3 to Redhsift staging tables
+- Complete the logic in create_tables.py to connect to the database and create these tables
+- Add redshift database and IAM role info to dwh.cfg.
+
+3. Build ETL Pipeline
 - Implement the logic in etl.py to load data from S3 to staging tables on Redshift.
 - Implement the logic in etl.py to load data from staging tables to analytics tables on Redshift.
-- Test by running etl.py after running create_tables.py and running the analytic queries on your Redshift database to compare your results with the expected results.
+- Test by running etl.py after running create_tables.py and running the analytic queries on your Redshift database.
 - Delete your redshift cluster when finished.
