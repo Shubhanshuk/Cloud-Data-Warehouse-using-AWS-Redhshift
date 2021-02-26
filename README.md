@@ -1,25 +1,27 @@
 # Cloud-Data-Warehouse-using-AWS-Redhshift
-Data pipeline to extract the data from S3 and load into AWS redshift
 
-# Project Datawarehouse
+## Project Scope
+A music streaming startup, Sparkify, has grown their user base and song database and want to move their processes and data onto the cloud. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
-## Project description
-
-Sparkify is a music streaming startup with a growing user base and song database.
+As their data engineer, you are tasked with building an ETL pipeline that extracts their data from S3, stages them in Redshift, and transforms data into a set of dimensional tables for their analytics team to continue finding insights in what songs their users are listening to. You'll be able to test your database and ETL pipeline by running queries given to you by the analytics team from Sparkify and compare your results with their expected results.
 
 Their user activity and songs metadata data resides in json files in S3. The goal of the current project is to build an ETL pipeline that extracts their data from S3, stages them in Redshift, and transforms data into a set of dimensional tables for their analytics team to continue finding insights in what songs their users are listening to. 
 
-## How to run
+## Steps to run the project
 
-1. To run this project you will need to fill the following information, and save it as *dwh.cfg* in the project root folder.
+1. Fill the required infromation and save it as *dwh.cfg*  file. 
 
 ```
+[AWS]
+KEY=
+SECRET=
+
 [CLUSTER]
-HOST=''
-DB_NAME=''
-DB_USER=''
-DB_PASSWORD=''
-DB_PORT=5439
+HOST=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_PORT=
 
 [IAM_ROLE]
 ARN=
@@ -29,20 +31,15 @@ LOG_DATA='s3://udacity-dend/log_data'
 LOG_JSONPATH='s3://udacity-dend/log_json_path.json'
 SONG_DATA='s3://udacity-dend/song_data'
 
-[AWS]
-KEY=
-SECRET=
 
 [DWH]
-DWH_CLUSTER_TYPE       = multi-node
-DWH_NUM_NODES          = 4
-DWH_NODE_TYPE          = dc2.large
-DWH_CLUSTER_IDENTIFIER = 
-DWH_DB                 = 
-DWH_DB_USER            = 
-DWH_DB_PASSWORD        = 
-DWH_PORT               = 5439
-DWH_IAM_ROLE_NAME      = 
+DWH_CLUSTER_IDENTIFIER=dwhCluster
+DWH_CLUSTER_TYPE=multi-node
+DWH_NUM_NODES=4
+DWH_NODE_TYPE=dc2.large
+DWH_IAM_ROLE_NAME=dwhRole
+
+
 ```
 
 2. Create a python environment with the dependencies listed on *requirements.txt*
