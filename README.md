@@ -42,18 +42,18 @@ DWH_IAM_ROLE_NAME=dwhRole
 
 ```
 
-2. Create a python environment with the dependencies listed on *requirements.txt*
-3. Run the *create_cluster* script to set up the needed infrastructure for this project.
+
+2. Run the *create_cluster* script. This script will create the AWS role and Redshift cluster. 
 
     `$ python create_cluster.py`
 
-4. Run the *create_tables* script to set up the database staging and analytical tables
+3. Run the *create_tables* script. This script will drop and create the staging tables as well as dimensional tables everytime this script is executed. 
 
     `$ python create_tables.py`
 
-5. Finally, run the *etl* script to extract data from the files in S3, stage it in redshift, and finally store it in the dimensional tables.
+4. Run the *etl* script. this script extract data from the files in S3, stage it in redshift, and finally store it in the dimensional tables.
 
-    `$ python create_tables.py`
+    `$ python etl.py`
 
 
 ## Project structure
@@ -90,21 +90,6 @@ State and justify your database schema design and ETL pipeline.
 *start_time, hour, day, week, month, year, weekday*
 
 
-## Queries and Results
-
-Number of rows in each table:
-
-| Table            | rows  |
-|---               | --:   |
-| staging_events   | 8056  |
-| staging_songs    | 14896 |
-| artists          | 10025 |
-| songplays        | 333   |
-| songs            | 14896 |
-| time             |  8023 |
-| users            |  105  |
-
-
 ### Steps followed on this project
 
 1. Create Table Schemas
@@ -121,10 +106,3 @@ Number of rows in each table:
 - Implement the logic in etl.py to load data from staging tables to analytics tables on Redshift.
 - Test by running etl.py after running create_tables.py and running the analytic queries on your Redshift database to compare your results with the expected results.
 - Delete your redshift cluster when finished.
-
-3. Document Process
-Do the following steps in your README.md file.
-
-- Discuss the purpose of this database in context of the startup, Sparkify, and their analytical goals.
-- State and justify your database schema design and ETL pipeline.
-- [Optional] Provide example queries and results for song play analysis.
